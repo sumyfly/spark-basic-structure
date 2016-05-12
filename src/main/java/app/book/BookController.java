@@ -9,6 +9,7 @@ import static app.util.RequestUtil.*;
 public class BookController {
 
     public static Route fetchAllBooks = (Request request, Response response) -> {
+        ViewUtil.ensureUserIsLoggedIn(request, response);
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
             model.put("books", BookDAO.getAllBooks());
@@ -21,6 +22,7 @@ public class BookController {
     };
 
     public static Route fetchOneBook = (Request request, Response response) -> {
+        ViewUtil.ensureUserIsLoggedIn(request, response);
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
             Book book = BookDAO.getBookByIsbn(getParamIsbn(request));

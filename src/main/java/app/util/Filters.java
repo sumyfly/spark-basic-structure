@@ -13,15 +13,6 @@ public class Filters {
         }
     };
 
-    // The origin of the request (request.pathInfo()) is saved in the session so
-    // the user can be redirected back after login
-    public static Filter redirectIfNotLoggedIn = (Request request, Response response) -> {
-        if (request.session().attribute("currentUser") == null) {
-            request.session().attribute("loginRedirect", request.pathInfo());
-            response.redirect(Path.Web.LOGIN);
-        }
-    };
-
     // Locale change can be initiated from any page
     // The locale is extracted from the request and saved to the user's session
     public static Filter handleLocaleChange = (Request request, Response response) -> {

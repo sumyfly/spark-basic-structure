@@ -11,7 +11,7 @@ public class Path {
         @Getter public static final String LOGIN = "/login/";
         @Getter public static final String LOGOUT = "/logout/";
         @Getter public static final String BOOKS = "/books/";
-        @Getter public static final String ONE_BOOK = BOOKS + ":isbn/";
+        @Getter public static final String ONE_BOOK = "/books/:isbn/";
     }
 
     public static class Template {

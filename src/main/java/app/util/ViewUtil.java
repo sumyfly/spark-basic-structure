@@ -9,6 +9,15 @@ import static app.util.RequestUtil.*;
 
 public class ViewUtil {
 
+    // The origin of the request (request.pathInfo()) is saved in the session so
+    // the user can be redirected back after login
+    public static void ensureUserIsLoggedIn(Request request, Response response) {
+        if (request.session().attribute("currentUser") == null) {
+            request.session().attribute("loginRedirect", request.pathInfo());
+            response.redirect(Path.Web.LOGIN);
+        }
+    };
+
     // Renders a template given a model and a request
     // The request is needed to check the user session for language settings
     // and to see if the user is logged in
