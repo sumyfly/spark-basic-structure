@@ -27,8 +27,9 @@ small {
 }
 
 header {
-    background: #444;
-    border-bottom: 3px solid #33b5b1;
+    background: #274555;
+    border-bottom: 5px solid #ff7761;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.6);
 }
 
 nav {
@@ -45,7 +46,7 @@ nav #menu {
 
 a {
     text-decoration: none;
-    color: #14aea7;
+    color: #ff7761;
 }
 
 #menu li {
@@ -117,7 +118,8 @@ footer {
     width: 100%;
     text-align: center;
     background: #fff;
-    border-top: 1px solid #FCB31D;
+    border-top: 1px solid #f9a11b;
+    font-size: 14px;
 }
 
 nav ul, nav li {
@@ -265,7 +267,7 @@ a .bookCover img {
 
 #loginForm input[type="submit"] {
     color: white;
-    background: #33b5b1;
+    background: #274555;
     border: 0;
     cursor: pointer;
 }
