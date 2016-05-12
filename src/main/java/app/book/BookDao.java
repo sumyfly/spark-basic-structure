@@ -3,9 +3,9 @@ package app.book;
 import com.google.common.collect.*;
 import java.util.*;
 
-public class BookDAO {
+public class BookDao {
 
-    private static final List<Book> books = ImmutableList.of(
+    private final List<Book> books = ImmutableList.of(
             new Book("Moby Dick", "Herman Melville", "9789583001215"),
             new Book("A Christmas Carol", "Charles Dickens", "9780141324524"),
             new Book("Pride and Prejudice", "Jane Austen", "9781936594290"),
@@ -20,15 +20,15 @@ public class BookDAO {
             new Book("Alice In Wonderland", "Lewis Carrol", "9780439291491")
     );
 
-    public static Iterable<Book> getAllBooks() {
+    public Iterable<Book> getAllBooks() {
         return books;
     }
 
-    public static Book getBookByIsbn(String isbn) {
+    public Book getBookByIsbn(String isbn) {
         return books.stream().filter(b -> b.getIsbn().equals(isbn)).findFirst().orElse(null);
     }
 
-    public static Book getRandomBook() {
+    public Book getRandomBook() {
         return books.get(new Random().nextInt(books.size()));
     }
 }

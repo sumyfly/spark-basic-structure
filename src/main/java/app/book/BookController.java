@@ -3,6 +3,7 @@ package app.book;
 import app.util.*;
 import spark.*;
 import java.util.*;
+import static app.Application.bookDao;
 import static app.util.JsonUtil.*;
 import static app.util.RequestUtil.*;
 
@@ -12,11 +13,11 @@ public class BookController {
         ViewUtil.ensureUserIsLoggedIn(request, response);
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
-            model.put("books", BookDAO.getAllBooks());
+            model.put("books", bookDao.getAllBooks());
             return ViewUtil.render(request, model, Path.Template.BOOKS_ALL);
         }
         if (clientAcceptsJson(request)) {
-            return dataToJson(BookDAO.getAllBooks());
+            return dataToJson(bookDao.getAllBooks());
         }
         return ViewUtil.notAcceptable.handle(request, response);
     };
@@ -25,12 +26,12 @@ public class BookController {
         ViewUtil.ensureUserIsLoggedIn(request, response);
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
-            Book book = BookDAO.getBookByIsbn(getParamIsbn(request));
+            Book book = bookDao.getBookByIsbn(getParamIsbn(request));
             model.put("book", book);
             return ViewUtil.render(request, model, Path.Template.BOOKS_ONE);
         }
         if (clientAcceptsJson(request)) {
-            return dataToJson(BookDAO.getBookByIsbn(getParamIsbn(request)));
+            return dataToJson(bookDao.getBookByIsbn(getParamIsbn(request)));
         }
         return ViewUtil.notAcceptable.handle(request, response);
     };

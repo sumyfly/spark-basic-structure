@@ -3,13 +3,22 @@ package app;
 import app.book.*;
 import app.index.*;
 import app.login.*;
+import app.user.*;
 import app.util.*;
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.*;
 
 public class Application {
 
+    // Declare dependencies
+    public static BookDao bookDao;
+    public static UserDao userDao;
+
     public static void main(String[] args) {
+
+        // Instantiate your dependencies
+        bookDao = new BookDao();
+        userDao = new UserDao();
 
         // Configure Spark
         port(4567);

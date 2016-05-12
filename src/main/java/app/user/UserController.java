@@ -1,6 +1,7 @@
 package app.user;
 
 import org.mindrot.jbcrypt.*;
+import static app.Application.userDao;
 
 public class UserController {
 
@@ -10,7 +11,7 @@ public class UserController {
         if (username.isEmpty() || password.isEmpty()) {
             return false;
         }
-        User user = UserDAO.getUserByUsername(username);
+        User user = userDao.getUserByUsername(username);
         if (user == null) {
             return false;
         }
